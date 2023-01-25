@@ -10,12 +10,12 @@ public class Main {
     //decler array list from user class type to save the users
     static ArrayList<User> user = new ArrayList<>();
     //decler array list from lawyer class type to save the lawyers
-    static ArrayList<Lawyer> list = new ArrayList<>(); 
+    static ArrayList<Lawyer> list = new ArrayList<>();
     //decler array list from Consultation class type to save the Consultations
     static ArrayList<Consultation> Lschedule = new ArrayList<>();
-     
+
     public static void main(String[] args) throws FileNotFoundException {
- 
+
 //        if (!DB.getDBfile().exists()) {
 //            throw new FileNotFoundException("file is not exist");
 //     }
@@ -24,7 +24,7 @@ public class Main {
         Readfile(); //read from file
         Scanner input = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
-        
+
         while (true) {
             System.out.println("--------------------------------------\n");
             System.out.println("        Welcome to Consultation \n");
@@ -33,17 +33,17 @@ public class Main {
             System.out.println("            2.Exit   ");
             System.out.print("       Please Enter a number:");
             int num = input2.nextInt();
-            
+
             if (num == 2) {// exit
                 System.exit(0);
             }
             if (num == 1) {
-                
+
                 System.out.print("Enter Username: ");
                 String username = input2.next();
                 System.out.print("Enter Password: ");
                 String password = input2.next();
-                
+
                 User user1 = User.Login(username, password);
                 //if user1=null that's means there is problem with login data
                 if (user1 == null) {
@@ -58,12 +58,38 @@ public class Main {
                         System.out.println("--------------------------------------------------");
                         System.out.println("\n       Welcome Back to Consultation \n");
 
+                        // Adapter pattern
+                        Lawyer lawyer = new Lawyer();
+                        LawyerAdapter lawyerAdapter = new LawyerAdapter();
+                        ConvertLawyer_To_Customer Adapter = new ConvertLawyer_To_Customer(new LawyerAdapter());
+
                         //show the menu
                         num2 = Menu();
+
                         switch (num2) {
                             case 1:
                                 if (user1.getUserID() < 20) {
-                                    System.out.println("You can't do this because you're a lawyer!!");
+                                    // Adapter pattren to allow lawyer reserve a Consultation with anoyher lawyer
+                                    Adapter.Customers();
+                                    for (int i = 0; i < list.size(); i++) {
+                                        if (!(user1.getUserID() == list.get(i).getUserID())) {
+                                            System.out.println("\n--- " + (i + 1) + "---\n" + list.get(i).toString());
+                                            System.out.println("-----------------------------------");
+                                        }
+                                    }
+
+                                    System.out.print("Please enter your choice by number of the Other lawyer: ");
+                                    int n = input2.nextInt();
+
+                                    if (Consultation.Displayschedule(n - 1, Lschedule)) {
+                                        // check if the appointment suitable for the user
+                                        System.out.print(
+                                                "\n----If it is suitable for you please write (Y) and if not  (N): ");
+                                        String choise = input.nextLine();
+                                        // take customer choice and book consultation appointment
+                                        Consultation.BookConsultation(choise, user1, Lschedule.get(n - 1));
+                                    }
+
                                 } else {
 
                                     //print all lawyers profile
@@ -74,7 +100,7 @@ public class Main {
                                     System.out.print("Please enter your choice by number of the lawyer: ");
                                     int n = input2.nextInt();
                                     // if the entered number match lawyer
-                                    
+
                                     if (Consultation.Displayschedule(n - 1, Lschedule)) {
                                         //check if the appoinment suitable for the user
                                         System.out.print("\n----If it is suitable for you please write (Y) and if not  (N): ");
@@ -84,13 +110,14 @@ public class Main {
                                     }
                                 }
                                 break;
+
                             case 2:
                                 //take the input rom user
                                 System.out.print("\nEnter the Lawyer name to search pleese :");
                                 String name = input.nextLine();
                                 //call the serach method and save the result
                                 Lawyer result = Customers.searchForLawyer(name, list);
-                                
+
                                 if (result == null) {
                                     //if the laweyer not found
                                     System.out.println("There is no Lawyer with this name!");
@@ -101,27 +128,47 @@ public class Main {
                                 break;
                             case 3:
                                 if (user1.getUserID() < 20) {
-                                    System.out.println("You can't do this because you're a lawyer! ");
-                                } else {
-                                    
+                                    // Adapter pattren to allow lawyer ratting the Consultation he had with other lawyrs
+                                    Adapter.Customers();
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
-                                    }
-                                    else{
-                                    // call method printEnded to print user Consultations
-                                    int n2 = Rating.printEnded(user1.Customer_Consultation);
-                                    if (n2 <= 0) {
-                                        System.out.println(" Ther is no Consultations with this number!");
                                     } else {
-                                        //get the user rate for a Consultation
-                                        System.out.print("How would you rate your experience out of 10? ");
-                                        double rate = input2.nextDouble();
-                                        //send the rate to method RatingCON to do the mathematical necessary operations
-                                        rate=Rating.RatingCON(user1.Customer_Consultation.get(n2 - 1), rate);
-                                        //update the rate of the lawyer
-                                        user1.Customer_Consultation.get(n2 - 1).getConsultationLawyer().setLawyerRate(rate);
-                                        System.out.println("            Thank you :>");
-                                    }}
+                                        // call method printEnded to print user Consultations
+                                        int n2 = Rating.printEnded(user1.Customer_Consultation);
+                                        if (n2 <= 0) {
+                                            System.out.println(" Ther is no Consultations with this number!");
+                                        } else {
+                                            // get the user rate for a Consultation
+                                            System.out.print("How would you rate your experience out of 10? ");
+                                            double rate = input2.nextDouble();
+                                            // send the rate to method RatingCON to do the mathematical necessary operations
+                                            rate = Rating.RatingCON(user1.Customer_Consultation.get(n2 - 1), rate);
+                                            // update the rate of the lawyer
+                                            user1.Customer_Consultation.get(n2 - 1).getConsultationLawyer()
+                                                    .setLawyerRate(rate);
+                                            System.out.println("            Thank you :>");
+                                        }
+                                    }
+                                } else {
+
+                                    if (user1.Customer_Consultation.isEmpty()) {
+                                        System.out.println("\n    You do not have any Consultation!");
+                                    } else {
+                                        // call method printEnded to print user Consultations
+                                        int n2 = Rating.printEnded(user1.Customer_Consultation);
+                                        if (n2 <= 0) {
+                                            System.out.println(" Ther is no Consultations with this number!");
+                                        } else {
+                                            //get the user rate for a Consultation
+                                            System.out.print("How would you rate your experience out of 10? ");
+                                            double rate = input2.nextDouble();
+                                            //send the rate to method RatingCON to do the mathematical necessary operations
+                                            rate = Rating.RatingCON(user1.Customer_Consultation.get(n2 - 1), rate);
+                                            //update the rate of the lawyer
+                                            user1.Customer_Consultation.get(n2 - 1).getConsultationLawyer().setLawyerRate(rate);
+                                            System.out.println("            Thank you :>");
+                                        }
+                                    }
                                 }
                                 break;
                             case 4:
@@ -134,15 +181,15 @@ public class Main {
 
                                 break;
                         }
-                    } while (num2 < 5 && num2>0);
+                    } while (num2 < 5 && num2 > 0);
                 }
 
             }
 
         }
     }
-
     //this method will display the menu for the user and run choosen function
+
     public static int Menu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("--------------------------------------------------");
@@ -163,11 +210,11 @@ public class Main {
             throw new FileNotFoundException("file is not exist");
         }
         Scanner input = new Scanner(DB.getDBfile());
-        
+
         //read the Lawyers data from DB file and store it
         String c = input.nextLine();
         String s = input.nextLine();
-            do{
+        do {
             String Name = s;
             String Phone = input.nextLine();
             String Email = input.nextLine();
@@ -179,8 +226,8 @@ public class Main {
             String id = input.nextLine();
             list.add(new Lawyer(Name, Phone, Email, Degree, Specialty, CasesTyep, Double.parseDouble(price), Integer.parseInt(num), Integer.parseInt(id)));
             s = input.nextLine();
-            }while (!s.equalsIgnoreCase("lawyers appointments"));
-            
+        } while (!s.equalsIgnoreCase("lawyers appointments"));
+
         //read the appointment data from DB file and store it
         s = input.nextLine();
         do {
