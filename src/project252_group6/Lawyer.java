@@ -138,6 +138,9 @@ public class Lawyer extends User {
         System.out.println("--------------------------------------------------");
         System.out.println(result.toString());//show profile after change
     }
+    public String UserType(){
+        return "Hello Lawyer ";
+    }
 
     @Override
     public String toString() {

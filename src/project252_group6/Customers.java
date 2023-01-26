@@ -13,5 +13,9 @@ public class Customers extends User{
         }
         return null;
     }
+    @Override
+    public String UserType(){
+        return "Hello customer ";
+    }
     
 }

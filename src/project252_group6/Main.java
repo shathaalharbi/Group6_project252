@@ -39,20 +39,33 @@ public class Main {
             }
             if (num == 1) {
 
-                System.out.print("Enter Username: ");
-                String username = input2.next();
+                System.out.print("Enter Userid: ");
+                int userid = input2.nextInt();
                 System.out.print("Enter Password: ");
                 String password = input2.next();
 
-                User user1 = User.Login(username, password);
+                User user1 = User.Login(userid, password);
                 //if user1=null that's means there is problem with login data
                 if (user1 == null) {
+                    System.out.println("--------------------------------------");
                     System.out.println("The user password or Username is incorrect");
                     System.out.println("Please try Again \n");
 
-                } //user not = null that's means user successfully login
-                else {
-
+                }
+                else{
+                    UserFactory UserType = new UserFactory();
+                    for(int i = 0; i < user.size(); i++){
+                    if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() >= 20){
+                        user1 = UserType.getUser("Customer");
+                        System.out.println("--------------------------------------");
+                        System.out.println(user1.UserType()+ user.get(i).getUserName());
+                    }
+                    else if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() < 20){
+                        user1 = UserType.getUser("Lawyer");
+                        System.out.println("--------------------------------------");
+                        System.out.println(user1.UserType() + user.get(i).getUserName());
+                    }
+                    }
                     int num2 = 0;
                     do {
                         System.out.println("--------------------------------------------------");

@@ -84,14 +84,17 @@ public  class User {
     public String toString() {
         return UserName+" "+userPassword+" "+UserID ;
     }
-    public static User Login(String username,String password) {
+    public String UserType(){
+        return null;
+    }
+    public static User Login(int userid,String password) {
          
 
         //search for the user and return it
         
        user1=Main.user;
         for (int i = 0; i < user1.size(); i++) {
-            if (user1.get(i).getuserPassword().equals(password) && user1.get(i).getUserName().equals(username)) {
+            if (user1.get(i).getuserPassword().equals(password) && user1.get(i).getUserID()== userid) {
                 // numUser = i;
                 return user1.get(i);
             }
