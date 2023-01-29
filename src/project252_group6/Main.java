@@ -53,19 +53,18 @@ public class Main {
 
                 }
                 else{
-                    UserFactory UserType = new UserFactory();
-                    for(int i = 0; i < user.size(); i++){
-                    if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() >= 20){
-                        user1 = UserType.getUser("Customer");
+                    //for(int i = 0; i < user.size(); i++){
+                    //if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() >= 20){
+                        //user1 = UserType.getUser("Customer");
                         System.out.println("--------------------------------------");
-                        System.out.println(user1.UserType()+ user.get(i).getUserName());
-                    }
-                    else if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() < 20){
-                        user1 = UserType.getUser("Lawyer");
-                        System.out.println("--------------------------------------");
-                        System.out.println(user1.UserType() + user.get(i).getUserName());
-                    }
-                    }
+                        System.out.println(user1.getUserType()+ user1.getUserName());
+                    //}
+                    //else if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() < 20){
+                       // user1 = UserType.getUser("Lawyer");
+                       // System.out.println("--------------------------------------");
+                       // System.out.println(user1.UserType() + user.get(i).getUserName());
+                    //}
+                    //}
                     int num2 = 0;
                     do {
                         System.out.println("--------------------------------------------------");
@@ -254,7 +253,13 @@ public class Main {
 
         //read the customres data from DB file and store it
         while (input.hasNext()) {
-            user.add(new User(input.next(), input.next(), input.nextInt()));
+            String userType = input.next();
+            String userName = input.next();
+            String userPassword = input.next();
+            int userId = input.nextInt();
+            UserFactory UserType = new UserFactory();
+            user.add(UserType.getUser(userType, userName, userPassword, userId));
+            //user.add(new User(input.next(), input.next(), input.nextInt()));
         }
     }
 }

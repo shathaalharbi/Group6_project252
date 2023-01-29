@@ -2,7 +2,7 @@ package project252_group6;
 
 import java.util.ArrayList;
 
-public  class User {
+public  abstract class User {
     String UserName = null;
     String userPassword = null;
     String UserEmail = null;
@@ -63,6 +63,7 @@ public  class User {
         return UserID;
     }
     
+    public abstract String getUserType();
     
     public void setUserID(int UserID) {
         this.UserID = UserID;
@@ -84,9 +85,7 @@ public  class User {
     public String toString() {
         return UserName+" "+userPassword+" "+UserID ;
     }
-    public String UserType(){
-        return null;
-    }
+    
     public static User Login(int userid,String password) {
          
 

@@ -29,6 +29,9 @@ public class Lawyer extends User {
         
     }
 
+    public Lawyer(String name, String password, int id){
+        super(name, password, id);
+    }
    
 
     public String getName() {
@@ -138,7 +141,9 @@ public class Lawyer extends User {
         System.out.println("--------------------------------------------------");
         System.out.println(result.toString());//show profile after change
     }
-    public String UserType(){
+    
+    @Override
+    public String getUserType(){
         return "Hello Lawyer ";
     }
 
