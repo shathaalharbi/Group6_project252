@@ -6,7 +6,7 @@
 package project252_group6;
 
 
-public class ConvertLawyer_To_Customer implements Customer_Implement  {
+public class ConvertLawyer_To_Customer implements Customer_Implement   {
 	
 	Lawyer_Implement lawyer_Serveic;
 	
@@ -16,7 +16,7 @@ public class ConvertLawyer_To_Customer implements Customer_Implement  {
 
 	@Override
 	public void Customers() {
-		this.lawyer_Serveic.Lawyer();
+		this.lawyer_Serveic.LawyerAdapter2();
 		System.out.println("-->The Lwayer was successfully Access to customer servics");
 		System.out.println("");
 		

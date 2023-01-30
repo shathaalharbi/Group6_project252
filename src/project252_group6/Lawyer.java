@@ -3,7 +3,7 @@ package project252_group6;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Lawyer extends User {
+public class Lawyer extends User implements Lawyer_Implement{
 
     String Name = null;
     String Degree = null;
@@ -142,6 +142,7 @@ public class Lawyer extends User {
         System.out.println(result.toString());//show profile after change
     }
     
+    
     @Override
     public String getUserType(){
         return "Hello Lawyer ";
@@ -153,6 +154,12 @@ public class Lawyer extends User {
                 + "The Degree is: " + this.Degree + "\n" + "The Specialty is: " + this.Specialty + "\n" + "The Case Type is : "
                 + this.CasesType + "\n" + "The Consultations price is: " + this.price + "\n" + "The number Of Consultations is: "
                 + this.numOfConsultations;
+    }
+
+    @Override
+    public void LawyerAdapter2() {
+                System.out.println("");
+		System.out.println("-->Lawyer want to access the customer servies");
     }
      
 }

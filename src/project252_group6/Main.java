@@ -71,10 +71,10 @@ public class Main {
                         System.out.println("--------------------------------------------------");
                         System.out.println("\n       Welcome Back to Consultation \n");
 
-                        // Adapter pattern
-                        Lawyer lawyer = new Lawyer();
-                        LawyerAdapter lawyerAdapter = new LawyerAdapter();
-                        ConvertLawyer_To_Customer Adapter = new ConvertLawyer_To_Customer(new LawyerAdapter());
+                      // Adapter pattern
+                      Lawyer lawyer = new Lawyer();
+                      ConvertLawyer_To_Customer Adapter = new ConvertLawyer_To_Customer(new Lawyer());
+                       
 
                         //show the menu
                         num2 = Menu();

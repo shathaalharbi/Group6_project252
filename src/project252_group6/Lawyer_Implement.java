@@ -8,6 +8,6 @@ package project252_group6;
 
 public interface Lawyer_Implement {
     
-    public void Lawyer();
+    public void LawyerAdapter2();
     
 }
