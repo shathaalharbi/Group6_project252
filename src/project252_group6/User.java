@@ -86,14 +86,14 @@ public  abstract class User {
         return UserName+" "+userPassword+" "+UserID ;
     }
     
-    public static User Login(int userid,String password) {
+    public static User Login(String username,String password) {
          
 
         //search for the user and return it
         
        user1=Main.user;
         for (int i = 0; i < user1.size(); i++) {
-            if (user1.get(i).getuserPassword().equals(password) && user1.get(i).getUserID()== userid) {
+            if (user1.get(i).getuserPassword().equals(password) && user1.get(i).getUserName().equals(username)) {
                 // numUser = i;
                 return user1.get(i);
             }

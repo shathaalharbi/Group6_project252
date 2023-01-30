@@ -37,14 +37,15 @@ public class Main {
             if (num == 2) {// exit
                 System.exit(0);
             }
+            System.out.println("");
             if (num == 1) {
 
-                System.out.print("Enter Userid: ");
-                int userid = input2.nextInt();
+                System.out.print("Enter UserName: ");
+                String userName = input2.next();
                 System.out.print("Enter Password: ");
                 String password = input2.next();
 
-                User user1 = User.Login(userid, password);
+                User user1 = User.Login(userName, password);
                 //if user1=null that's means there is problem with login data
                 if (user1 == null) {
                     System.out.println("--------------------------------------");
