@@ -29,8 +29,8 @@ public class Lawyer extends User implements Lawyer_Implement{
         
     }
 
-    public Lawyer(String name, String password, int id){
-        super(name, password, id);
+    public Lawyer(String type,String name, String password, int id){
+        super(type,name, password, id);
     }
    
 
@@ -142,11 +142,7 @@ public class Lawyer extends User implements Lawyer_Implement{
         System.out.println(result.toString());//show profile after change
     }
     
-    
-    @Override
-    public String getUserType(){
-        return "Hello Lawyer ";
-    }
+
 
     @Override
     public String toString() {

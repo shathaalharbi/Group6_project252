@@ -7,9 +7,9 @@ public class UserFactory {
         if(userType == null)
             return null;
         else if(userType.equalsIgnoreCase("Customer"))
-            return new Customers(userName, userPassword, userId);
+            return new Customers(userType,userName, userPassword, userId);
         else if (userType.equalsIgnoreCase("Lawyer"))
-            return new Lawyer(userName, userPassword, userId);
+            return new Lawyer(userType,userName, userPassword, userId);
         else
             return null;
     }

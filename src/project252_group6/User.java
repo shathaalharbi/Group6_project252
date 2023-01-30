@@ -3,6 +3,7 @@ package project252_group6;
 import java.util.ArrayList;
 
 public  abstract class User {
+    String Usertype=null;
     String UserName = null;
     String userPassword = null;
     String UserEmail = null;
@@ -18,7 +19,8 @@ public  abstract class User {
         this.Phone = phone;
         this.UserEmail = email;
     }
-    public User(String UserName, String userPassword, int UserID) {
+    public User(String type,String UserName, String userPassword, int UserID) {
+        this.Usertype=type;
         this.UserName = UserName;
         this.userPassword = userPassword;
         this.UserID = UserID;
@@ -63,8 +65,6 @@ public  abstract class User {
         return UserID;
     }
     
-    public abstract String getUserType();
-    
     public void setUserID(int UserID) {
         this.UserID = UserID;
     }
@@ -86,20 +86,4 @@ public  abstract class User {
         return UserName+" "+userPassword+" "+UserID ;
     }
     
-    public static User Login(String username,String password) {
-         
-
-        //search for the user and return it
-        
-       user1=Main.user;
-        for (int i = 0; i < user1.size(); i++) {
-            if (user1.get(i).getuserPassword().equals(password) && user1.get(i).getUserName().equals(username)) {
-                // numUser = i;
-                return user1.get(i);
-            }
-        }
-
-        return null;
-    
-}
 }

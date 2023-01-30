@@ -45,20 +45,16 @@ public class Main {
                 System.out.print("Enter Password: ");
                 String password = input2.next();
 
-                User user1 = User.Login(userName, password);
+              
+              Access a = new loginProxy(userName, password);
+               User user1 = a.checkaccess();
                 //if user1=null that's means there is problem with login data
-                if (user1 == null) {
-                    System.out.println("--------------------------------------");
-                    System.out.println("The user password or Username is incorrect");
-                    System.out.println("Please try Again \n");
-
-                }
-                else{
+                if (user1 != null){
                     //for(int i = 0; i < user.size(); i++){
                     //if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() >= 20){
                         //user1 = UserType.getUser("Customer");
-                        System.out.println("--------------------------------------");
-                        System.out.println(user1.getUserType()+ user1.getUserName());
+                        
+   // System.out.println(user1.getUserType()+ user1.getUserName());
                     //}
                     //else if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() < 20){
                        // user1 = UserType.getUser("Lawyer");
