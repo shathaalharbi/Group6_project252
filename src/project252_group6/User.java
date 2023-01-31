@@ -80,6 +80,10 @@ public  abstract class User {
      
       Customer_Consultation.remove(i);     
     }
+    public  void RemoveConsultation(Consultation con){
+     
+      Customer_Consultation.remove(con);     
+    }
   
      @Override
     public String toString() {

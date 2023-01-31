@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import static project252_group6.Cancel.CancelAppointment;
+import static project252_group6.Reschedule.RescheduleAppointment;
+import static project252_group6.Reschedule.RescheduleAppointmentLawyer;
+import static project252_group6.Schedule.ScheduleAppointment;
+import static project252_group6.Schedule.ScheduleAppointmentLawyer;
 
 public class Main {
 
@@ -74,13 +79,15 @@ public class Main {
 
                         //show the menu
                         num2 = Menu();
-
+                        MakeAppointment m = new MakeAppointment();
                         switch (num2) {
                             case 1:
                                 if (user1.getUserID() < 20) {
                                     // Adapter pattren to allow lawyer reserve a Consultation with anoyher lawyer
                                     Adapter.Customers();
-                                    for (int i = 0; i < list.size(); i++) {
+                                    ScheduleAppointmentLawyer(user1);
+                                    m.scheduleAppointment();
+                                    /*for (int i = 0; i < list.size(); i++) {
                                         if (!(user1.getUserID() == list.get(i).getUserID())) {
                                             System.out.println("\n--- " + (i + 1) + "---\n" + list.get(i).toString());
                                             System.out.println("-----------------------------------");
@@ -97,26 +104,12 @@ public class Main {
                                         String choise = input.nextLine();
                                         // take customer choice and book consultation appointment
                                         Consultation.BookConsultation(choise, user1, Lschedule.get(n - 1));
-                                    }
+                                    }*/
 
                                 } else {
+                                        ScheduleAppointment(user1);
+                                        m.scheduleAppointment();
 
-                                    //print all lawyers profile
-                                    for (int i = 0; i < list.size(); i++) {
-                                        System.out.println("\n--- " + (i + 1) + "---\n" + list.get(i).toString());
-                                        System.out.println("-----------------------------------");
-                                    }
-                                    System.out.print("Please enter your choice by number of the lawyer: ");
-                                    int n = input2.nextInt();
-                                    // if the entered number match lawyer
-
-                                    if (Consultation.Displayschedule(n - 1, Lschedule)) {
-                                        //check if the appoinment suitable for the user
-                                        System.out.print("\n----If it is suitable for you please write (Y) and if not  (N): ");
-                                        String choise = input.nextLine();
-                                        //take customer choise and book consltation appoinment
-                                        Consultation.BookConsultation(choise, user1, Lschedule.get(n - 1));
-                                    }
                                 }
                                 break;
 
@@ -189,8 +182,58 @@ public class Main {
                                 }
 
                                 break;
+                                
+                                case 5:
+                                //check user if it ia a lawyer or not using id
+                                if (user1.getUserID() < 20) {
+                                    //System.out.println("You can't do this because you're a lawyer! ");
+                                    Adapter.Customers();
+                                    if (user1.Customer_Consultation.isEmpty()) {
+                                        System.out.println("\n    You do not have any Consultation!");
+                                    } else {
+                                        
+                                        RescheduleAppointmentLawyer(user1);
+                                        m.rescheduleAppointment();
+                                    }
+                                } else {
+                                    
+                                    if (user1.Customer_Consultation.isEmpty()) {
+                                        System.out.println("\n    You do not have any Consultation!");
+                                    } else {
+                                        
+                                        RescheduleAppointment(user1);
+                                        m.rescheduleAppointment();
+                                    }
+                                    
+                                }
+
+                                break;
+                                
+                                case 6:
+                                //check user if it ia a lawyer or not using id
+                                if (user1.getUserID() < 20) {
+                                    //System.out.println("You can't do this because you're a lawyer! ");
+                                    Adapter.Customers();
+                                    if (user1.Customer_Consultation.isEmpty()) {
+                                        System.out.println("\n    You do not have any Consultation!");
+                                    } else {
+                                        
+                                        CancelAppointment(user1);
+                                        m.cancelAppointment();
+                                    }
+                                } else{
+                                    if (user1.Customer_Consultation.isEmpty()) {
+                                        System.out.println("\n    You do not have any Consultation!");
+                                    }  else {
+                                        
+                                        CancelAppointment(user1);
+                                        m.cancelAppointment();
+                                    }
+                                }
+                                break;
+                                
                         }
-                    } while (num2 < 5 && num2 > 0);
+                    } while (num2 < 7 && num2 > 0);
                 }
 
             }
@@ -203,7 +246,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("--------------------------------------------------");
         System.out.println("    1.  Make Consultation\n    2.  Search for Lawye"
-                + "\n    3.  Rating Consultation Session\n    4.  Manage Lawyer Profile");
+                + "\n    3.  Rating Consultation Session\n    4.  Manage Lawyer Profile\n    5.  Reschedule An Appointment"
+        + "\n    6.  Cancel An Appointment");
         System.out.println("--------------------------------------------------");
         System.out.print("Enter your choice (1 - 4) or any other number to back to login bage: ");
         int choice = sc.nextInt();

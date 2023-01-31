@@ -161,8 +161,7 @@ public class Consultation {
             con.getCustomer().AddConsultation(con);
             //increment the number of Consultation of the lawyer
             con.getConsultationLawyer().setNumOfConsultations(con.getConsultationLawyer().getNumOfConsultations() + 1);
-            System.out.println("Your Consltation has been booked successfully "
-                    + "\nPlease be in time");
+            
 
         } else {
             System.out.println("\nWe are sorry for not having an suitable appointment with you");
