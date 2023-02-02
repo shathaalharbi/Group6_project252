@@ -52,21 +52,9 @@ public class Main {
 
               
               Access a = new loginProxy(userName, password);
-               User user1 = a.checkaccess();
+              User user1 = a.checkaccess();
                 //if user1=null that's means there is problem with login data
                 if (user1 != null){
-                    //for(int i = 0; i < user.size(); i++){
-                    //if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() >= 20){
-                        //user1 = UserType.getUser("Customer");
-                        
-   // System.out.println(user1.getUserType()+ user1.getUserName());
-                    //}
-                    //else if(user1.getUserID() == user.get(i).getUserID() && user1.getUserID() < 20){
-                       // user1 = UserType.getUser("Lawyer");
-                       // System.out.println("--------------------------------------");
-                       // System.out.println(user1.UserType() + user.get(i).getUserName());
-                    //}
-                    //}
                     int num2 = 0;
                     do {
                         System.out.println("--------------------------------------------------");
@@ -245,7 +233,7 @@ public class Main {
     public static int Menu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("--------------------------------------------------");
-        System.out.println("    1.  Make Consultation\n    2.  Search for Lawye"
+        System.out.println("    1.  Make Consultation\n    2.  Search for Lawyer"
                 + "\n    3.  Rating Consultation Session\n    4.  Manage Lawyer Profile\n    5.  Reschedule An Appointment"
         + "\n    6.  Cancel An Appointment");
         System.out.println("--------------------------------------------------");
