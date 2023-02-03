@@ -146,8 +146,7 @@ public class Lawyer extends User implements Lawyer_Implement{
 
     @Override
     public String toString() {
-        return "The Lawyer name is: " + this.Name + "\n" + "Phone Number: " + this.Phone + "\n" + "Email: " + this.UserEmail + "\n"
-                + "The Degree is: " + this.Degree + "\n" + "The Specialty is: " + this.Specialty + "\n" + "The Case Type is : "
+        return "The Lawyer name is: " + this.Name + "\n"+ "The Degree is: " + this.Degree + "\n" + "The Specialty is: " + this.Specialty + "\n" + "The Case Type is : "
                 + this.CasesType + "\n" + "The Consultations price is: " + this.price + "\n" + "The number Of Consultations is: "
                 + this.numOfConsultations;
     }

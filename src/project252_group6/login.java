@@ -2,20 +2,20 @@ package project252_group6;
 
 public class login implements Access {
 
-    private String user;
+    private String username;
     private String password;
 
     public login(String user, String password) {
-        this.user = user;
+        this.username = user;
         this.password = password;
     }
 
     public String getUser() {
-        return user;
+        return username;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        this.username = user;
     }
 
     public String getPassword() {
