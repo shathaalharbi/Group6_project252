@@ -4,7 +4,7 @@ public class loginProxy implements Access {
 
     private String username;
     private String password;
-    private login login;
+    private Login login;
 
     public loginProxy(String username, String password) {
         this.username = username;
