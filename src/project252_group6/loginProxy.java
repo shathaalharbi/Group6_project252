@@ -22,11 +22,11 @@ public class loginProxy implements Access {
             System.out.println("Please try Again \n");
             return null;
         }
-        else if (user.Usertype.equalsIgnoreCase("Customer")) {
+        else if (user.getUserType().equalsIgnoreCase("Customer")) {
             Customers customer = (Customers) user;
             System.out.println("Welcome back customer : " + customer.UserName);
             return customer;
-        } else if (user.Usertype.equalsIgnoreCase("Lawyer")) {
+        } else if (user.getUserType().equalsIgnoreCase("Lawyer")) {
             Lawyer lawyer = (Lawyer) user;
             System.out.println("Welcome back Lawyer : " + lawyer.UserName);
             return lawyer;

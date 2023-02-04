@@ -92,6 +92,10 @@ public class Lawyer extends User implements Lawyer_Implement{
         this.LawyerRate = LawyerRate;
     }
     
+    @Override
+    public String getUserType(){
+        return Usertype;
+    }
     //Method to getLawyer by the id
     public static Lawyer getLawyer(String id, ArrayList<Lawyer> list) {
         for (int i = 0; i < list.size(); i++) {

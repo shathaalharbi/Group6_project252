@@ -65,6 +65,8 @@ public  abstract class User {
         return UserID;
     }
     
+    public abstract String getUserType();
+    
     public void setUserID(int UserID) {
         this.UserID = UserID;
     }

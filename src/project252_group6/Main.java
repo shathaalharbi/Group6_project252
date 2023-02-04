@@ -282,13 +282,13 @@ public class Main {
 
         //read the customres data from DB file and store it
         while (input.hasNext()) {
+            //Factory Pattern
             String userType = input.next();
             String userName = input.next();
             String userPassword = input.next();
             int userId = input.nextInt();
             UserFactory UserType = new UserFactory();
             user.add(UserType.getUser(userType, userName, userPassword, userId));
-            //user.add(new User(input.next(), input.next(), input.nextInt()));
         }
     }
 }
