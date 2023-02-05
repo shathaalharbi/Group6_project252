@@ -1,7 +1,6 @@
 package project252_group6;
 
-
-public class Login implements Access {
+public class  Login implements Access {
 
     private String username;
     private String password;

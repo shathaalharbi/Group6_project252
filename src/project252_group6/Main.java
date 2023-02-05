@@ -67,34 +67,21 @@ public class Main {
 
                         //show the menu
                         num2 = Menu();
+                        // Make an instance of facade class 
                         MakeAppointment m = new MakeAppointment();
                         switch (num2) {
                             case 1:
                                 if (user1.getUserID() < 20) {
                                     // Adapter pattren to allow lawyer reserve a Consultation with anoyher lawyer
                                     Adapter.Customers();
+                                    // schedule method for lawyer
                                     ScheduleAppointmentLawyer(user1);
                                     m.scheduleAppointment();
-                                    /*for (int i = 0; i < list.size(); i++) {
-                                        if (!(user1.getUserID() == list.get(i).getUserID())) {
-                                            System.out.println("\n--- " + (i + 1) + "---\n" + list.get(i).toString());
-                                            System.out.println("-----------------------------------");
-                                        }
-                                    }
+                                    
 
-                                    System.out.print("Please enter your choice by number of the Other lawyer: ");
-                                    int n = input2.nextInt();
-
-                                    if (Consultation.Displayschedule(n - 1, Lschedule)) {
-                                        // check if the appointment suitable for the user
-                                        System.out.print(
-                                                "\n----If it is suitable for you please write (Y) and if not  (N): ");
-                                        String choise = input.nextLine();
-                                        // take customer choice and book consultation appointment
-                                        Consultation.BookConsultation(choise, user1, Lschedule.get(n - 1));
-                                    }*/
-
+                                    
                                 } else {
+                                        // schedule method for user
                                         ScheduleAppointment(user1);
                                         m.scheduleAppointment();
 
@@ -102,7 +89,7 @@ public class Main {
                                 break;
 
                             case 2:
-                                //take the input rom user
+                                //take the input fom user
                                 System.out.print("\nEnter the Lawyer name to search pleese :");
                                 String name = input.nextLine();
                                 //call the serach method and save the result
@@ -174,12 +161,13 @@ public class Main {
                                 case 5:
                                 //check user if it ia a lawyer or not using id
                                 if (user1.getUserID() < 20) {
-                                    //System.out.println("You can't do this because you're a lawyer! ");
+                                    
                                     Adapter.Customers();
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
                                     } else {
                                         
+                                        // Reschedule method for lawyer
                                         RescheduleAppointmentLawyer(user1);
                                         m.rescheduleAppointment();
                                     }
@@ -188,7 +176,7 @@ public class Main {
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
                                     } else {
-                                        
+                                        // Reschedule method for user
                                         RescheduleAppointment(user1);
                                         m.rescheduleAppointment();
                                     }
@@ -205,7 +193,7 @@ public class Main {
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
                                     } else {
-                                        
+                                        // Cancel method for lawyer
                                         CancelAppointment(user1);
                                         m.cancelAppointment();
                                     }
@@ -213,7 +201,7 @@ public class Main {
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
                                     }  else {
-                                        
+                                        // Cancel method for user
                                         CancelAppointment(user1);
                                         m.cancelAppointment();
                                     }
