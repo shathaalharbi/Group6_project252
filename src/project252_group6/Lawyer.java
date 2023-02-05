@@ -33,6 +33,10 @@ public class Lawyer extends User implements Lawyer_Implement{
         super(type,name, password, id);
     }
    
+    @Override
+    public String getUserType(){
+        return Usertype;
+    }
 
     public String getName() {
         return Name;
@@ -92,10 +96,7 @@ public class Lawyer extends User implements Lawyer_Implement{
         this.LawyerRate = LawyerRate;
     }
     
-    @Override
-    public String getUserType(){
-        return Usertype;
-    }
+    
     //Method to getLawyer by the id
     public static Lawyer getLawyer(String id, ArrayList<Lawyer> list) {
         for (int i = 0; i < list.size(); i++) {

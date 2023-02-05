@@ -26,6 +26,8 @@ public  abstract class User {
         this.UserID = UserID;
     }
    
+    public abstract String getUserType();
+    
     public String getUserName() {
         return UserName;
     }
@@ -64,8 +66,6 @@ public  abstract class User {
      public int getUserID() {
         return UserID;
     }
-    
-    public abstract String getUserType();
     
     public void setUserID(int UserID) {
         this.UserID = UserID;

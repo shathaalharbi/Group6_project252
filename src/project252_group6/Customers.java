@@ -8,6 +8,7 @@ public class Customers extends User{
         super(type,name, password, id);
     }
     
+    @Override
     public String getUserType(){
     return Usertype;
     }
