@@ -9,7 +9,7 @@ import static project252_group6.Main.Lschedule;
 import static project252_group6.Main.list;
 import project252_group6.User;
 
-public class Schedule implements AppointmentInterface{
+public class Schedule extends AppointmentInterface{
 
     public Schedule() {
     }
@@ -70,6 +70,16 @@ public class Schedule implements AppointmentInterface{
                                     
      
         
+    }
+
+    @Override
+    public void sendRequest() {
+        System.out.println("Your request have been received :> please wait for approval"); 
+    }
+
+    @Override
+    public void reciveApproval() {
+        System.out.println("The request have been approved thank you for your time :>"); 
     }
     
 }

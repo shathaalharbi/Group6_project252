@@ -161,7 +161,8 @@ public class Consultation {
             con.getCustomer().AddConsultation(con);
             //increment the number of Consultation of the lawyer
             con.getConsultationLawyer().setNumOfConsultations(con.getConsultationLawyer().getNumOfConsultations() + 1);
-            
+            AppointmentInterface m =new Schedule();
+            m.start();
 
         } else {
             System.out.println("\nWe are sorry for not having an suitable appointment with you");

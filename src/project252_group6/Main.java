@@ -68,7 +68,6 @@ public class Main {
                         //show the menu
                         num2 = Menu();
                         // Make an instance of facade class 
-                        MakeAppointment m = new MakeAppointment();
                         switch (num2) {
                             case 1:
                                 if (user1.getUserID() < 20) {
@@ -76,14 +75,15 @@ public class Main {
                                     Adapter.Customers();
                                     // schedule method for lawyer
                                     ScheduleAppointmentLawyer(user1);
-                                    m.scheduleAppointment();
+                                    
+                                    
                                     
 
                                     
                                 } else {
                                         // schedule method for user
                                         ScheduleAppointment(user1);
-                                        m.scheduleAppointment();
+
 
                                 }
                                 break;
@@ -169,7 +169,6 @@ public class Main {
                                         
                                         // Reschedule method for lawyer
                                         RescheduleAppointmentLawyer(user1);
-                                        m.rescheduleAppointment();
                                     }
                                 } else {
                                     
@@ -178,7 +177,6 @@ public class Main {
                                     } else {
                                         // Reschedule method for user
                                         RescheduleAppointment(user1);
-                                        m.rescheduleAppointment();
                                     }
                                     
                                 }
@@ -186,6 +184,7 @@ public class Main {
                                 break;
                                 
                                 case 6:
+                                    MakeAppointment can=new MakeAppointment();
                                 //check user if it ia a lawyer or not using id
                                 if (user1.getUserID() < 20) {
                                     //System.out.println("You can't do this because you're a lawyer! ");
@@ -193,9 +192,10 @@ public class Main {
                                     if (user1.Customer_Consultation.isEmpty()) {
                                         System.out.println("\n    You do not have any Consultation!");
                                     } else {
+                                        
                                         // Cancel method for lawyer
                                         CancelAppointment(user1);
-                                        m.cancelAppointment();
+                                       can.cancelAppointment();
                                     }
                                 } else{
                                     if (user1.Customer_Consultation.isEmpty()) {
@@ -203,7 +203,7 @@ public class Main {
                                     }  else {
                                         // Cancel method for user
                                         CancelAppointment(user1);
-                                        m.cancelAppointment();
+                                        can.cancelAppointment();
                                     }
                                 }
                                 break;

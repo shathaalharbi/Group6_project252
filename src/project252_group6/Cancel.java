@@ -4,7 +4,7 @@ package project252_group6;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cancel implements AppointmentInterface{
+public class Cancel extends AppointmentInterface{
     
     public Cancel() {
     }
@@ -56,4 +56,10 @@ public class Cancel implements AppointmentInterface{
         
     
     }
+
+    @Override
+    public void sendRequest() {    }
+
+    @Override
+    public void reciveApproval() {    }
 }
