@@ -47,14 +47,9 @@ public class Cancel extends AppointmentInterface{
                             (us.Customer_Consultation.get(num - 1).getConsultationLawyer().getNumOfConsultations() - 1);
                 
                 us.RemoveConsultation(us.Customer_Consultation.get(num - 1));
-
-            
-            
+ 
             }}}
-        else{}
 
-        
-    
     }
 
     @Override
